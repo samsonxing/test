@@ -1,0 +1,395 @@
+Last login: Thu Jun 18 11:22:26 on ttys001
+
+The default interactive shell is now zsh.
+To update your account to use zsh, please run `chsh -s /bin/zsh`.
+For more details, please visit https://support.apple.com/kb/HT208050.
+(base) samsondeMacBook:cnn-master samson$ git stuts
+git: 'stuts' is not a git command. See 'git --help'.
+
+The most similar command is
+	status
+(base) samsondeMacBook:cnn-master samson$ git status
+On branch master
+
+No commits yet
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+
+	new file:   1.py
+
+(base) samsondeMacBook:cnn-master samson$ git rm --cached <1.py>
+-bash: syntax error near unexpected token `newline'
+(base) samsondeMacBook:cnn-master samson$ git rm --cached <file>1.py
+-bash: file: No such file or directory
+(base) samsondeMacBook:cnn-master samson$ ls
+1.py
+(base) samsondeMacBook:cnn-master samson$ git rm --cached <file> 1.py
+-bash: file: No such file or directory
+(base) samsondeMacBook:cnn-master samson$ git log
+fatal: your current branch 'master' does not have any commits yet
+(base) samsondeMacBook:cnn-master samson$ git branch --set-upstream
+(base) samsondeMacBook:cnn-master samson$ git push -u origin dev
+error: src refspec dev does not match any.
+error: failed to push some refs to 'origin'
+(base) samsondeMacBook:cnn-master samson$ git branch --set-upstream dev origin/dev
+fatal: the '--set-upstream' option is no longer supported. Please use '--track' or '--set-upstream-to' instead.
+(base) samsondeMacBook:cnn-master samson$ git branch --set-upstream-to dev origin/dev
+fatal: branch 'origin/dev' does not exist
+(base) samsondeMacBook:cnn-master samson$ git branch --set-upstream-to dev origin/
+fatal: branch 'origin/' does not exist
+(base) samsondeMacBook:cnn-master samson$ git branch --set-upstream-to dev 
+fatal: branch 'master' does not exist
+(base) samsondeMacBook:cnn-master samson$ git commit -m "create 1.py"
+[master (root-commit) bac5c7a] create 1.py
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 1.py
+(base) samsondeMacBook:cnn-master samson$ git status
+On branch master
+nothing to commit, working tree clean
+(base) samsondeMacBook:cnn-master samson$ git log
+commit bac5c7a8016a9601eed917b604e348644f96a2c8 (HEAD -> master)
+Author: samsonxing <dreamnba@qq.com>
+Date:   Thu Jun 18 11:38:31 2020 +0800
+
+    create 1.py
+(base) samsondeMacBook:cnn-master samson$ git status
+On branch master
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+	modified:   1.py
+
+no changes added to commit (use "git add" and/or "git commit -a")
+(base) samsondeMacBook:cnn-master samson$ git add 1.py
+(base) samsondeMacBook:cnn-master samson$ git commit -m "change 1"
+[master 5143311] change 1
+ 1 file changed, 1 insertion(+)
+(base) samsondeMacBook:cnn-master samson$ git log
+commit 51433113ead572ecfcdd9e4b5315292502d8a368 (HEAD -> master)
+Author: samsonxing <dreamnba@qq.com>
+Date:   Thu Jun 18 11:42:16 2020 +0800
+
+    change 1
+
+commit bac5c7a8016a9601eed917b604e348644f96a2c8
+Author: samsonxing <dreamnba@qq.com>
+Date:   Thu Jun 18 11:38:31 2020 +0800
+
+    create 1.py
+(base) samsondeMacBook:cnn-master samson$ git status -s
+ M 1.py
+(base) samsondeMacBook:cnn-master samson$ git diff
+diff --git a/1.py b/1.py
+index 1337a53..ff7c36c 100644
+--- a/1.py
++++ b/1.py
+@@ -1 +1,2 @@
+-a = 1
++a = 2
++b = 1
+(base) samsondeMacBook:cnn-master samson$ git add .
+(base) samsondeMacBook:cnn-master samson$ git status
+On branch master
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+	modified:   1.py
+
+(base) samsondeMacBook:cnn-master samson$ git status -s
+M  1.py
+(base) samsondeMacBook:cnn-master samson$ git diff
+(base) samsondeMacBook:cnn-master samson$ git diff --cached
+diff --git a/1.py b/1.py
+index 1337a53..ff7c36c 100644
+--- a/1.py
++++ b/1.py
+@@ -1 +1,2 @@
+-a = 1
++a = 2
++b = 1
+(base) samsondeMacBook:cnn-master samson$ git status -s
+MM 1.py
+(base) samsondeMacBook:cnn-master samson$ git diff HEAD
+diff --git a/1.py b/1.py
+index 1337a53..ac13cf6 100644
+--- a/1.py
++++ b/1.py
+@@ -1 +1,3 @@
+-a = 1
++a = 2
++b = 1
++c = b
+\ No newline at end of file
+(base) samsondeMacBook:cnn-master samson$ git diff
+diff --git a/1.py b/1.py
+index ff7c36c..ac13cf6 100644
+--- a/1.py
++++ b/1.py
+@@ -1,2 +1,3 @@
+ a = 2
+ b = 1
++c = b
+\ No newline at end of file
+(base) samsondeMacBook:cnn-master samson$ git add .
+(base) samsondeMacBook:cnn-master samson$ git commit -m "change 2"
+[master fed26ab] change 2
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+(base) samsondeMacBook:cnn-master samson$ git status -s
+(base) samsondeMacBook:cnn-master samson$ git log
+commit fed26ab552bde75a0ec0e3c76573967e3d05110b (HEAD -> master)
+Author: samsonxing <dreamnba@qq.com>
+Date:   Thu Jun 18 12:59:53 2020 +0800
+
+    change 2
+
+commit 51433113ead572ecfcdd9e4b5315292502d8a368
+Author: samsonxing <dreamnba@qq.com>
+Date:   Thu Jun 18 11:42:16 2020 +0800
+
+    change 1
+
+commit bac5c7a8016a9601eed917b604e348644f96a2c8
+Author: samsonxing <dreamnba@qq.com>
+Date:   Thu Jun 18 11:38:31 2020 +0800
+
+    create 1.py
+(base) samsondeMacBook:cnn-master samson$ git log --online
+fatal: unrecognized argument: --online
+(base) samsondeMacBook:cnn-master samson$ git log --oneline
+fed26ab (HEAD -> master) change 2
+5143311 change 1
+bac5c7a create 1.py
+(base) samsondeMacBook:cnn-master samson$ git add 2.py
+(base) samsondeMacBook:cnn-master samson$ git commit --amend --no-edit
+[master d5fa4c8] change 2
+ Date: Thu Jun 18 12:59:53 2020 +0800
+ 2 files changed, 6 insertions(+), 1 deletion(-)
+ create mode 100644 2.py
+(base) samsondeMacBook:cnn-master samson$ git log  --oneline
+d5fa4c8 (HEAD -> master) change 2
+5143311 change 1
+bac5c7a create 1.py
+(base) samsondeMacBook:cnn-master samson$ git add 1.py
+(base) samsondeMacBook:cnn-master samson$ git status -s
+M  1.py
+(base) samsondeMacBook:cnn-master samson$ git reset 1.py
+Unstaged changes after reset:
+M	1.py
+(base) samsondeMacBook:cnn-master samson$ git log --oneline
+d5fa4c8 (HEAD -> master) change 2
+5143311 change 1
+bac5c7a create 1.py
+(base) samsondeMacBook:cnn-master samson$ git add 1.py
+(base) samsondeMacBook:cnn-master samson$ git reset --hard HEAD
+HEAD is now at d5fa4c8 change 2
+(base) samsondeMacBook:cnn-master samson$ git status -s
+(base) samsondeMacBook:cnn-master samson$ git reset -- hard HEAD~1
+(base) samsondeMacBook:cnn-master samson$ git log --oneline
+d5fa4c8 (HEAD -> master) change 2
+5143311 change 1
+bac5c7a create 1.py
+(base) samsondeMacBook:cnn-master samson$ git reset --hard 5143311
+HEAD is now at 5143311 change 1
+(base) samsondeMacBook:cnn-master samson$ git log --online
+fatal: unrecognized argument: --online
+(base) samsondeMacBook:cnn-master samson$ git log --oneline
+5143311 (HEAD -> master) change 1
+bac5c7a create 1.py
+(base) samsondeMacBook:cnn-master samson$ git reflog
+5143311 (HEAD -> master) HEAD@{0}: reset: moving to 5143311
+d5fa4c8 HEAD@{1}: reset: moving to HEAD
+d5fa4c8 HEAD@{2}: commit (amend): change 2
+fed26ab HEAD@{3}: commit: change 2
+5143311 (HEAD -> master) HEAD@{4}: commit: change 1
+bac5c7a HEAD@{5}: commit (initial): create 1.py
+(base) samsondeMacBook:cnn-master samson$ git reset --hard d5fa4c8
+HEAD is now at d5fa4c8 change 2
+(base) samsondeMacBook:cnn-master samson$ git log --online
+fatal: unrecognized argument: --online
+(base) samsondeMacBook:cnn-master samson$ git log --oneline
+d5fa4c8 (HEAD -> master) change 2
+5143311 change 1
+bac5c7a create 1.py
+(base) samsondeMacBook:cnn-master samson$ git checkout -- 1.py
+(base) samsondeMacBook:cnn-master samson$ git checkout bac5c7a --1.py
+error: unknown option `1.py'
+usage: git checkout [<options>] <branch>
+   or: git checkout [<options>] [<branch>] -- <file>...
+
+    -q, --quiet           suppress progress reporting
+    -b <branch>           create and checkout a new branch
+    -B <branch>           create/reset and checkout a branch
+    -l                    create reflog for new branch
+    --detach              detach HEAD at named commit
+    -t, --track           set upstream info for new branch
+    --orphan <new-branch>
+                          new unparented branch
+    -2, --ours            checkout our version for unmerged files
+    -3, --theirs          checkout their version for unmerged files
+    -f, --force           force checkout (throw away local modifications)
+    -m, --merge           perform a 3-way merge with the new branch
+    --overwrite-ignore    update ignored files (default)
+    --conflict <style>    conflict style (merge or diff3)
+    -p, --patch           select hunks interactively
+    --ignore-skip-worktree-bits
+                          do not limit pathspecs to sparse entries only
+    --ignore-other-worktrees
+                          do not check if another worktree is holding the given ref
+    --recurse-submodules[=<checkout>]
+                          control recursive updating of submodules
+    --progress            force progress reporting
+
+(base) samsondeMacBook:cnn-master samson$ git checkout bac5c7a -- 1.py
+(base) samsondeMacBook:cnn-master samson$ git add 1.py
+(base) samsondeMacBook:cnn-master samson$ git commit -m "back to change 1 and add commit for 1.py"
+[master 0809303] back to change 1 and add commit for 1.py
+ 1 file changed, 2 insertions(+), 3 deletions(-)
+(base) samsondeMacBook:cnn-master samson$ git log --oneline
+0809303 (HEAD -> master) back to change 1 and add commit for 1.py
+d5fa4c8 change 2
+5143311 change 1
+bac5c7a create 1.py
+(base) samsondeMacBook:cnn-master samson$ git log  --online --graph
+fatal: unrecognized argument: --online
+(base) samsondeMacBook:cnn-master samson$ git log  --oneline --graph
+* 0809303 (HEAD -> master) back to change 1 and add commit for 1.py
+* d5fa4c8 change 2
+* 5143311 change 1
+* bac5c7a create 1.py
+(base) samsondeMacBook:cnn-master samson$ git branch dev
+(base) samsondeMacBook:cnn-master samson$ git brach
+git: 'brach' is not a git command. See 'git --help'.
+
+The most similar command is
+	branch
+(base) samsondeMacBook:cnn-master samson$ git branch
+  dev
+* master
+(base) samsondeMacBook:cnn-master samson$ git checkout dev
+Switched to branch 'dev'
+(base) samsondeMacBook:cnn-master samson$ git checkout master
+Switched to branch 'master'
+(base) samsondeMacBook:cnn-master samson$ git branch -d dev
+Deleted branch dev (was 0809303).
+(base) samsondeMacBook:cnn-master samson$ git checkout -b dev
+Switched to a new branch 'dev'
+(base) samsondeMacBook:cnn-master samson$ git branch
+* dev
+  master
+(base) samsondeMacBook:cnn-master samson$ git commit -am "change 3 in dev"
+[dev e7f167d] change 3 in dev
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+(base) samsondeMacBook:cnn-master samson$ git checkout master
+Switched to branch 'master'
+(base) samsondeMacBook:cnn-master samson$ git log --oneline
+0809303 (HEAD -> master) back to change 1 and add commit for 1.py
+d5fa4c8 change 2
+5143311 change 1
+bac5c7a create 1.py
+(base) samsondeMacBook:cnn-master samson$ git branch
+  dev
+* master
+(base) samsondeMacBook:cnn-master samson$ 
+(base) samsondeMacBook:cnn-master samson$ git merge --no-ff -m 'keep merge info' dev
+Merge made by the 'recursive' strategy.
+ 1.py | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+(base) samsondeMacBook:cnn-master samson$ git log --oneline
+3dbd1ee (HEAD -> master) keep merge info
+e7f167d (dev) change 3 in dev
+0809303 back to change 1 and add commit for 1.py
+d5fa4c8 change 2
+5143311 change 1
+bac5c7a create 1.py
+(base) samsondeMacBook:cnn-master samson$ git log --oneline --graph
+*   3dbd1ee (HEAD -> master) keep merge info
+|\  
+| * e7f167d (dev) change 3 in dev
+|/  
+* 0809303 back to change 1 and add commit for 1.py
+* d5fa4c8 change 2
+* 5143311 change 1
+* bac5c7a create 1.py
+(base) samsondeMacBook:cnn-master samson$ git branch
+  dev
+* master
+(base) samsondeMacBook:cnn-master samson$ git checkout master
+Already on 'master'
+(base) samsondeMacBook:cnn-master samson$ git log --online --graph
+fatal: unrecognized argument: --online
+(base) samsondeMacBook:cnn-master samson$ git remote add origin https://github.com/samsonxing/test
+(base) samsondeMacBook:cnn-master samson$ git push -u origin master
+Username for 'https://github.com': samsonxing
+Password for 'https://samsonxing@github.com': 
+To https://github.com/samsonxing/test
+ ! [rejected]        master -> master (fetch first)
+error: failed to push some refs to 'https://github.com/samsonxing/test'
+hint: Updates were rejected because the remote contains work that you do
+hint: not have locally. This is usually caused by another repository pushing
+hint: to the same ref. You may want to first integrate the remote changes
+hint: (e.g., 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+(base) samsondeMacBook:cnn-master samson$ git push -u origin master
+To https://github.com/samsonxing/test
+ ! [rejected]        master -> master (fetch first)
+error: failed to push some refs to 'https://github.com/samsonxing/test'
+hint: Updates were rejected because the remote contains work that you do
+hint: not have locally. This is usually caused by another repository pushing
+hint: to the same ref. You may want to first integrate the remote changes
+hint: (e.g., 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+(base) samsondeMacBook:cnn-master samson$ git pull --rebase origin master
+warning: no common commits
+remote: Enumerating objects: 3, done.
+remote: Counting objects: 100% (3/3), done.
+remote: Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
+Unpacking objects: 100% (3/3), done.
+From https://github.com/samsonxing/test
+ * branch            master     -> FETCH_HEAD
+ * [new branch]      master     -> origin/master
+First, rewinding head to replay your work on top of it...
+Applying: create 1.py
+Applying: change 1
+Applying: change 2
+Applying: back to change 1 and add commit for 1.py
+Applying: change 3 in dev
+(base) samsondeMacBook:cnn-master samson$ git push -u origin master
+Counting objects: 15, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (11/11), done.
+Writing objects: 100% (15/15), 1.36 KiB | 465.00 KiB/s, done.
+Total 15 (delta 0), reused 0 (delta 0)
+To https://github.com/samsonxing/test
+   080a00e..05b3276  master -> master
+Branch 'master' set up to track remote branch 'master' from 'origin'.
+(base) samsondeMacBook:cnn-master samson$ git add.
+git: 'add.' is not a git command. See 'git --help'.
+
+The most similar command is
+	add
+(base) samsondeMacBook:cnn-master samson$ git add .
+(base) samsondeMacBook:cnn-master samson$ git commit -m  "start"
+[master 30c7fbd] start
+ 1 file changed, 1 insertion(+)
+(base) samsondeMacBook:cnn-master samson$ git log --oneline
+30c7fbd (HEAD -> master) start
+05b3276 (origin/master) change 3 in dev
+9674c01 back to change 1 and add commit for 1.py
+7350c1d change 2
+31fe0e0 change 1
+27b95d7 create 1.py
+080a00e Initial commit
+(base) samsondeMacBook:cnn-master samson$ git status -s
+(base) samsondeMacBook:cnn-master samson$ git push -u origin
+Counting objects: 3, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 300 bytes | 300.00 KiB/s, done.
+Total 3 (delta 1), reused 0 (delta 0)
+remote: Resolving deltas: 100% (1/1), completed with 1 local object.
+To https://github.com/samsonxing/test
+   05b3276..30c7fbd  master -> master
+Branch 'master' set up to track remote branch 'master' from 'origin'.
+(base) samsondeMacBook:cnn-master samson$ 
